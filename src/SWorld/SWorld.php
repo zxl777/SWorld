@@ -42,7 +42,7 @@ class SWorld extends PluginBase implements CommandExecutor, Listener {
 	  	}
 	}
 	
-  	public function onCommand(CommandSender $sender, Command $cmd, $label, array $args) {
+	public function onCommand(CommandSender $sender, Command $cmd, string $label, array $args) : bool{
     	switch($cmd->getName()) {
 			
 			case "unload":
@@ -60,6 +60,7 @@ class SWorld extends PluginBase implements CommandExecutor, Listener {
 							$sender->sendMessage(Font::GREEN . "[SWorld] 地图 $l 已被成功卸载 ！ ");
 						}
 					}
+					return true;
 				}
 	 		break;
 	 
@@ -89,6 +90,8 @@ class SWorld extends PluginBase implements CommandExecutor, Listener {
 					}else{
 						$sender->sendMessage(Font::RED . "[SWorld] 无法加载地图 ".$args[0]." , 地图文件不存在");
 					}
+
+					return true;
 			 	}
 	 		break;
 	 
@@ -100,7 +103,9 @@ class SWorld extends PluginBase implements CommandExecutor, Listener {
 				$sender->sendMessage("==== 地图列表 ====");
        			foreach ($levels as $level){
 	   				$sender->sendMessage(" - ".$level->getFolderName());
-	  			}
+				  }
+				  
+				  return true;
 	  		break;
 	  
 			case "w":
@@ -119,10 +124,17 @@ class SWorld extends PluginBase implements CommandExecutor, Listener {
 		  			}
 	  			}else{
 	  				$sender->sendMessage("[SWorld] 只能在游戏中使用这个命令");
-	  			}
-	  		break;
+				  }
+				  return true;
+			  break;
+			  
+			  default:
+			  {
+				  return false;
+			  }
 	  
-  		}
+		  }
+		return false;
 	}
 	
 }
