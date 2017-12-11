@@ -1,7 +1,7 @@
 ﻿name: SWorld
 main: SWorld\SWorld
 version: 1.2.0
-api: [3.0.0-ALPHA3,3.0.0-ALPHA8, 3.0.0-ALPHA9]
+api: [3.0.0-ALPHA3,3.0.0-ALPHA8, 3.0.0-ALPHA9, 3.0.0-ALPHA10]
 load: POSTWORLD
 author: 18WYJ2 & boybook
 
